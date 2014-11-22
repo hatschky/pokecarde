@@ -1,5 +1,3 @@
-INCLUDE "../macros.asm"
-
 SECTION "eonticket",ROM0[$100]
 jp Start
 db $00
@@ -16,15 +14,19 @@ Prologue:
 	Text "e reader" ; no string terminator
 	db 0,0,0,0,$01,$55
 	db 0,0,0,0
-	db REGION_EN
+	db REGION
 	db 0
 	db "GameFreak inc."
 	db 0,0
 
 DataPacket: ; 164a
-	Insert_Header REGION_EN
+	Insert_Header REGION
 	db MULTIPLE_DATA
-	INCBIN "eonticket.bin"
+	IF REGION == REGION_DE
+		INCBIN "eonticket-de.bin"
+	ELSE
+		INCBIN "eonticket-en.bin"
+	ENDC
 	db 0,0,0 ; padding
 
 INCLUDE "../common/mem_struct.asm"
@@ -142,7 +144,6 @@ Start: ; 1ae2
 	API $0C6
 
 	DrawText RegionHandlePtr, Instructions1, 8, 4
-
 	API $08D
 
 INCLUDE "../common/wait_for_link.asm"

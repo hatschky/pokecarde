@@ -416,6 +416,10 @@ chars = {
 	':': '\xF0',
 }
 
+region = ""
+if sys.argv[2][-6] == '-':
+	region = sys.argv[2][-5:-3].upper()
+
 out = open(sys.argv[2], 'w')
 with open(sys.argv[1], 'r') as f:
 	for asm in f:
@@ -429,7 +433,11 @@ with open(sys.argv[1], 'r') as f:
 			asms[0] = asms[0].replace("Text", "db")
 		elif asms[0].strip() == "Tag_Text":
 			pad_length = 45
-		elif asms[0].find("OT_Name") == -1 and asms[0].find("Nickname") == -1 and asms[0].find("Insert_Prologue") == -1 and asms[0].find("Berry") == -1 and asms[0].find("Tag_Text") == -1:
+		elif asms[0].strip() == ("Text_" + region):
+			asms[0] = asms[0].replace("Text_" + region, "db")
+		elif asms[0].find("Text_") != -1:
+			asms[0] = ";"
+		elif asms[0].find("OT_Name") == -1 and asms[0].find("Nickname") == -1 and asms[0].find("Insert_Prologue") == -1 and asms[0].find("Berry") == -1:
 			print_macro = False
 
 		if print_macro:

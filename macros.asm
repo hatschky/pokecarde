@@ -83,6 +83,10 @@ Insert_Header: MACRO
 
 REGION_JP EQU $01
 REGION_EN EQU $02
+REGION_FR EQU $03 ; ?
+REGION_IT EQU $04 ; ?
+REGION_DE EQU $05 ; !
+REGION_ES EQU $07 ; ¿?
 
 ; types of card data
 VARIABLE_LENGTH  EQU $02
