@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class BEAUTY
 	BT_Floor MOSSDEEP
-	OT_Name "ELLIE"
+	Text_EN "ELLIE"8
 	OT_ID 00000, 00000
 
-	Introduction I_AM,ON,A_LITTLE,DIET,_AND,HUNGRY
-	After_Win    THIS,DIET,IS,REALLY,WORKING,ME
-	After_Loss   SHOULD,I,EAT,LESS,_OR,MORE
+	Intro_EN I_AM,ON,A_LITTLE,DIET,_AND,HUNGRY
+	Win_EN   THIS,DIET,IS,REALLY,WORKING,ME
+	Loss_EN  SHOULD,I,EAT,LESS,_OR,MORE
 
 	Pokemon CASTFORM
 	Holds HEART_SCALE
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, CASTFORM_FORECAST
 	PV $0000000F ; ♀ Modest
-	Nickname "CASTFORM"
+	Text_EN "CASTFORM"11
 	Friendship 255
 
 	Pokemon KOFFING
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, KOFFING_LEVITATE
 	PV $0000008F ; ♂ Bashful
-	Nickname "KOFFING"
+	Text_EN "KOFFING"11
 	Friendship 255
 
 	Pokemon CHIMECHO
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, CHIMECHO_LEVITATE
 	PV $0000000F ; ♀ Modest
-	Nickname "CHIMECHO"
+	Text_EN "CHIMECHO"11
 	Friendship 255
+
+	End_Trainer

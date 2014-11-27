@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db YOUNGSTER
+	Class YOUNGSTER
 	BT_Floor MOSSDEEP
-	OT_Name "RUDY"
+	Text_EN "RUDY"8
 	OT_ID 00000, 00000
 
-	Introduction YEAH,_EX,GO,_EX,_TACKLE,_EX_EX
-	After_Win    I,SOMEHOW,WON,THE,BATTLE,_EX_EX
-	After_Loss   I_AM,NOT,HOPELESS,BUT,I,GIVE_UP
+	Intro_EN YEAH,_EX,GO,_EX,_TACKLE,_EX_EX
+	Win_EN   I,SOMEHOW,WON,THE,BATTLE,_EX_EX
+	Loss_EN  I_AM,NOT,HOPELESS,BUT,I,GIVE_UP
 
 	Pokemon CASCOON
 	Holds EVERSTONE
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, CASCOON_SHED_SKIN
 	PV $00000083 ; ♂ Docile
-	Nickname "CASCOON"
+	Text_EN "CASCOON"11
 	Friendship 255
 
 	Pokemon SILCOON
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, SILCOON_SHED_SKIN
 	PV $00000012 ; ♀ Bashful
-	Nickname "SILCOON"
+	Text_EN "SILCOON"11
 	Friendship 255
 
 	Pokemon MAGIKARP
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, MAGIKARP_SWIFT_SWIM
 	PV $00000095 ; ♂ Quirky
-	Nickname "MAGIKARP"
+	Text_EN "MAGIKARP"11
 	Friendship 255
+
+	End_Trainer

@@ -1,2 +1,3 @@
-INCLUDE "enigmaberry.tx"
-	EnigmaBerry "berries/eggant.bin"
+INCLUDE "../macros.asm"
+BERRY EQUS "eggant"
+INCLUDE "enigmaberry-{REGION_NAME}.tx"

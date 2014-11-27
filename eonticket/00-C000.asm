@@ -1,3 +1,4 @@
+INCLUDE "../macros.asm"
 SECTION "eonticket",ROM0[$100]
 jp Start
 db $00
@@ -8,25 +9,10 @@ TicketPalette: ; 1604
 	INCLUDE "ticket.pal"
 
 Prologue:
-	db "GameFreak inc."
-	db 0,0,0,0,0,0
-	dd 0
-	Text "e reader" ; no string terminator
-	db 0,0,0,0,$01,$55
-	db 0,0,0,0
-	db REGION
-	db 0
-	db "GameFreak inc."
-	db 0,0
+	INCBIN "prologue-{REGION_NAME}.bin"
 
 DataPacket: ; 164a
-	Insert_Header REGION
-	db MULTIPLE_DATA
-	IF REGION == REGION_DE
-		INCBIN "eonticket-de.bin"
-	ELSE
-		INCBIN "eonticket-en.bin"
-	ENDC
+	INCBIN "eonticket-{REGION_NAME}.mev"
 	db 0,0,0 ; padding
 
 INCLUDE "../common/mem_struct.asm"
@@ -59,7 +45,7 @@ TicketDelivered: ; 1a2f
 ; this function is subtly different than the one
 ; on the Battle e cards, for no apparent reason
 TransferData:
-	LD_IND_HL $1ca2
+	LD_IND_HL SomeVar1
 	push de
 	ld hl, $bbbb
 	LD_IND_HL Space_1
@@ -73,9 +59,9 @@ TransferData:
 	ld b, $01
 	call WordShiftRight
 
-	LD_IND_HL $1ca7
+	LD_IND_HL SomeVar2
 .asm_1aa1
-	LD_HL_IND $1ca7
+	LD_HL_IND SomeVar2
 	ld a, l
 	or h
 	ret z
@@ -90,12 +76,12 @@ TransferData:
 	jr nc, .asm_1ad9
 
 	push de
-	LD_HL_IND $1ca2
+	LD_HL_IND SomeVar1
 	ld c, [hl]
 	inc hl
 	ld b, [hl]
 	inc hl
-	LD_IND_HL $1ca2
+	LD_IND_HL SomeVar1
 	ld l, e
 	ld h, $00
 	add hl, hl
@@ -105,9 +91,9 @@ TransferData:
 	inc hl
 	ld [hl], b
 	pop de
-	LD_HL_IND $1ca7
+	LD_HL_IND SomeVar2
 	dec hl
-	LD_IND_HL $1ca7
+	LD_IND_HL SomeVar2
 	ld a, l
 	or h
 	jr z, .asm_1ad9
@@ -181,8 +167,8 @@ INCLUDE "../common/wrap_up.asm"
 
 INCLUDE "../common/word_shift_right.asm"
 
-EmulatorRAM: ; 1CA2
-	ds 2
-RegionHandlePtr: ds 1 ; 1CA4
-SpriteHandlePtr: ds 2 ; 1CA5
-SomeVar1: ds 2 ; 1CA7
+SomeVar1: ; 1CA2
+	db $FF,0 ; mark EOF
+RegionHandlePtr: db 0 ; 1CA4
+SpriteHandlePtr: db 0,0 ; 1CA5
+SomeVar2: db 0,0 ; 1CA7

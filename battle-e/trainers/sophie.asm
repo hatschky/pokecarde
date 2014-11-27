@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class LADY
 	BT_Floor MOSSDEEP
-	OT_Name "SOPHIE"
+	Text_EN "SOPHIE"8
 	OT_ID 00000, 00000
 
-	Introduction MY,CUTENESS,WILL,_STOP,YOU,_EX
-	After_Win    FUFUFU,DID,YOU,LIKE,IT,_QU_EX
-	After_Loss   EH_,YOU,ARE,VERY,CUTE,TOO
+	Intro_EN MY,CUTENESS,WILL,_STOP,YOU,_EX
+	Win_EN   FUFUFU,DID,YOU,LIKE,IT,_QU_EX
+	Loss_EN  EH_,YOU,ARE,VERY,CUTE,TOO
 
 	Pokemon DELCATTY
 	Holds SILK_SCARF
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, DELCATTY_CUTE_CHARM
 	PV $0000001C ; ♀ Adamant
-	Nickname "DELCATTY"
+	Text_EN "DELCATTY"11
 	Friendship 255
 
 	Pokemon LUVDISC
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, LUVDISC_SWIFT_SWIM
 	PV $000000E7 ; ♂ Docile
-	Nickname "LUVDISC"
+	Text_EN "LUVDISC"11
 	Friendship 255
 
 	Pokemon KIRLIA
-	dw BRIGHTPOWDER
+	Holds BRIGHTPOWDER
 	Moves ATTRACT, PSYCHIC, HYPNOSIS, DREAM_EATER
 	Level 90
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, KIRLIA_TRACE
 	PV $0000000F ; ♀ Modest
-	Nickname "KIRLIA"
+	Text_EN "KIRLIA"11
 	Friendship 255
+
+	End_Trainer

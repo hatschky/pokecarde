@@ -1,23 +1,27 @@
-INCLUDE "macros.asm"
+INCLUDE "berries/macros.asm"
 
-	Berry "NUTPEA"
-	db SUPER_HARD
+	Enigma_Berry
+
+	Text_EN "NUTPEA"7
+	Firmness SUPER_HARD
 	Size 12,4
 	Yield_Range 1, 3
-	db 0,0,0,0,0,0,0,0
-	db 18 ; hours per growth stage
-	db 10,10,10,10,10 ; flavor
-	db 5 ; smoothness
-	db 0
+	dd 0
+	dd 0
+	Growth_Stage_Hours 18
+	Flavor 10, 10, 10, 10, 10
+	Smoothness 5
 
 BerrySprite:
-	INCBIN "../sprites/berries/nutpea.4bpp"
-
+	INCBIN "sprites/berries/nutpea.4bpp"
 BerryPalette:
-	INCLUDE "../sprites/berries/nutpea.pal"
+	INCLUDE "sprites/berries/nutpea.pal"
 
-	Tag_Text "This BERRY is rigid and cracks open"
-	Tag_Text "when the center is squeezed."
+	Text_EN "This BERRY is rigid and cracks open"45
+	Text_EN "when the center is squeezed."45
+
 	REPT 22
 		db 0 ; Pokéblock ingredient only
 	ENDR
+
+	End_Berry

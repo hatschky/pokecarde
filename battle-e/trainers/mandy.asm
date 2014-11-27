@@ -1,17 +1,19 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
-	db SCHOOL_KID_F
+	Class SCHOOL_KID_F
 	BT_Floor 12
-	OT_Name "MANDY"
+	Text_EN "MANDY"8
 	OT_ID 00000, 00000
 
-	Introduction I,WAKE_UP,_AND,STUDY,VERY,HARD
-	After_Win    STUDY,IS,BORING,IT_S,NAP,TIME
-	After_Loss   _REST,_ELIP,NAP,_ELIP,SLEEP,NOW
+	Intro_EN I,WAKE_UP,_AND,STUDY,VERY,HARD
+	Win_EN   STUDY,IS,BORING,IT_S,NAP,TIME
+	Loss_EN  _REST,_ELIP,NAP,_ELIP,SLEEP,NOW
 
 	Pokemon ALTARIA
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves SING, DRAGON_CLAW, ICE_BEAM, FLAMETHROWER
 	Level 50
 	PP_Ups 0,0,0,0
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,31,15,31,15, ALTARIA_NATURAL_CURE
 	PV $0000000F ; ♀ Modest
-	Nickname "ALTARIA"
+	Text_EN "ALTARIA"11
 	Friendship 255
 
 	Pokemon BRELOOM
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, BRELOOM_EFFECT_SPORE
 	PV $000000E4 ; ♂ Adamant
-	Nickname "BRELOOM"
+	Text_EN "BRELOOM"11
 	Friendship 255
 
 	Pokemon SLAKING
-	dw BRIGHTPOWDER
+	Holds BRIGHTPOWDER
 	Moves YAWN, HYPER_BEAM, SHADOW_BALL, ICE_BEAM
 	Level 50
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,15,15,31, SLAKING_TRUANT
 	PV $000000DE ; ♂ Sassy
-	Nickname "SLAKING"
+	Text_EN "SLAKING"11
 	Friendship 255
+
+	End_Trainer

@@ -1,17 +1,19 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db HIKER
+	Class HIKER
 	BT_Floor MOSSDEEP
-	OT_Name "HUGO"
+	Text_EN "HUGO"8
 	OT_ID 00000, 00000
 
-	Introduction START,_A,DIET,_QU,NO,WAY
-	After_Win    HAH,_ELIP,I_AM,NOW,HUNGRY,_ELIP
-	After_Loss   IT_S,SUPER,HARD,TO,DIET,_EX_EX
+	Intro_EN START,_A,DIET,_QU,NO,WAY
+	Win_EN   HAH,_ELIP,I_AM,NOW,HUNGRY,_ELIP
+	Loss_EN  IT_S,SUPER,HARD,TO,DIET,_EX_EX
 
 	Pokemon WALREIN
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves BLIZZARD, REST, BODY_SLAM, SURF
 	Level 66
 	PP_Ups 0,0,0,0
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, WALREIN_THICK_FAT
 	PV $0000008E ; ♂ Quiet
-	Nickname "WALREIN"
+	Text_EN "WALREIN"11
 	Friendship 255
 
 	Pokemon HARIYAMA
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, HARIYAMA_THICK_FAT
 	PV $0000007F ; ♂ Brave
-	Nickname "HARIYAMA"
+	Text_EN "HARIYAMA"11
 	Friendship 255
 
 	Pokemon GRUMPIG
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves PSYCHIC, IRON_TAIL, CONFUSE_RAY, PROTECT
 	Level 70
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,31,31, GRUMPIG_THICK_FAT
 	PV $00000018 ; ♀ Quirky
-	Nickname "GRUMPIG"
+	Text_EN "GRUMPIG"11
 	Friendship 255
+
+	End_Trainer

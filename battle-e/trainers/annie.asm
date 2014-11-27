@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class SWIMMER_F
 	BT_Floor MOSSDEEP
-	OT_Name "ANNIE"
+	Text_EN "ANNIE"8
 	OT_ID 00000, 00000
 
-	Introduction HERE_I_COME,_EX,GO,MY,WATER,POKEMON
-	After_Win    IT_S,_A,GREAT,POKEMON,ISN_T,IT
-	After_Loss   DON_T,YOU,KNOW,THIS,POKEMON,_QU
+	Intro_EN HERE_I_COME,_EX,GO,MY,WATER,POKEMON
+	Win_EN   IT_S,_A,GREAT,POKEMON,ISN_T,IT
+	Loss_EN  DON_T,YOU,KNOW,THIS,POKEMON,_QU
 
 	Pokemon MACHAMP
 	Holds BLACK_BELT
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, MACHAMP_GUTS
 	PV $000000E7 ; ♂ Docile
-	Nickname "MACHAMP"
+	Text_EN "MACHAMP"11
 	Friendship 255
 
 	Pokemon MAGNETON
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, MAGNETON_STURDY
 	PV $0000000C ; ⚲ Serious
-	Nickname "MAGNETON"
+	Text_EN "MAGNETON"11
 	Friendship 255
 
 	Pokemon BLASTOISE
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, BLASTOISE_TORRENT
 	PV $00000012 ; ♀ Bashful
-	Nickname "BLASTOISE"
+	Text_EN "BLASTOISE"11
 	Friendship 255
+
+	End_Trainer

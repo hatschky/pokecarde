@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db BATTLE_GIRL
+	Class BATTLE_GIRL
 	BT_Floor MOSSDEEP
-	OT_Name "NATALIE"
+	Text_EN "NATALIE"8
 	OT_ID 00000, 00000
 
-	Introduction GET,READY,TO,START,THE,BATTLE
-	After_Win    ALTHOUGH,I_AM,SMALL,I,BEAT,YOU
-	After_Loss   NEXT,BATTLE,I,WILL,BE,BETTER
+	Intro_EN GET,READY,TO,START,THE,BATTLE
+	Win_EN   ALTHOUGH,I_AM,SMALL,I,BEAT,YOU
+	Loss_EN  NEXT,BATTLE,I,WILL,BE,BETTER
 
 	Pokemon MAGIKARP
 	Holds CHOICE_BAND
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, MAGIKARP_SWIFT_SWIM
 	PV $000000E4 ; ♂ Adamant
-	Nickname "MAGIKARP"
+	Text_EN "MAGIKARP"11
 	Friendship 255
 
 	Pokemon LAIRON
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, LAIRON_STURDY
 	PV $000000E4 ; ♂ Adamant
-	Nickname "LAIRON"
+	Text_EN "LAIRON"11
 	Friendship 255
 
 	Pokemon SHELGON
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves DRAGONBREATH, EMBER, BITE, THRASH
 	Level 50
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, SHELGON_ROCK_HEAD
 	PV $0000001C ; ♀ Adamant
-	Nickname "SHELGON"
+	Text_EN "SHELGON"11
 	Friendship 255
+
+	End_Trainer

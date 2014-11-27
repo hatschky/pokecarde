@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class HEX_MANIAC
 	BT_Floor MOSSDEEP
-	OT_Name "CELINA"
+	Text_EN "CELINA"8
 	OT_ID 00000, 00000
 
-	Introduction GHOST,_ELIP,WHAT,COULD,THAT,BE
-	After_Win    GHOST,_ELIP,THEY,NEVER,GET,DEFEATED
-	After_Loss   GHOST,_ELIP,THEY,GOT,DEFEATED,_QU
+	Intro_EN GHOST,_ELIP,WHAT,COULD,THAT,BE
+	Win_EN   GHOST,_ELIP,THEY,NEVER,GET,DEFEATED
+	Loss_EN  GHOST,_ELIP,THEY,GOT,DEFEATED,_QU
 
 	Pokemon DUSCLOPS
 	Holds SPELL_TAG
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, DUSCLOPS_PRESSURE
 	PV $00000095 ; ♂ Quirky
-	Nickname "DUSCLOPS"
+	Text_EN "DUSCLOPS"11
 	Friendship 255
 
 	Pokemon SABLEYE
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, SABLEYE_KEEN_EYE
 	PV $00000096 ; ♂ Hardy
-	Nickname "SABLEYE"
+	Text_EN "SABLEYE"11
 	Friendship 255
 
 	Pokemon SHEDINJA
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, SHEDINJA_WONDER_GUARD
 	PV $00000080 ; ⚲ Adamant
-	Nickname "SHEDINJA"
+	Text_EN "SHEDINJA"11
 	Friendship 255
+
+	End_Trainer

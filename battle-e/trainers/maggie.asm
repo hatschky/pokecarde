@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db POKEFAN_F
+	Class POKEFAN_F
 	BT_Floor MOSSDEEP
-	OT_Name "MAGGIE"
+	Text_EN "MAGGIE"8
 	OT_ID 00000, 00000
 
-	Introduction LOOK,AT,MY,CUTE,POKEMON,_EX
-	After_Win    MY,POKEMON,ARE,SO,CUTE,_EX
-	After_Loss   YOU,BETTER,CARE,FOR,MY,POKEMON
+	Intro_EN LOOK,AT,MY,CUTE,POKEMON,_EX
+	Win_EN   MY,POKEMON,ARE,SO,CUTE,_EX
+	Loss_EN  YOU,BETTER,CARE,FOR,MY,POKEMON
 
 	Pokemon WYNAUT
 	Holds LUM_BERRY
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,31,15,15,15, WYNAUT_SHADOW_TAG
 	PV $00000083 ; ♂ Docile
-	Nickname "WYNAUT"
+	Text_EN "WYNAUT"11
 	Friendship 255
 
 	Pokemon WHISMUR
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, WHISMUR_SOUNDPROOF
 	PV $0000001F ; ♀ Docile
-	Nickname "WHISMUR"
+	Text_EN "WHISMUR"11
 	Friendship 255
 
 	Pokemon PIKACHU
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, PIKACHU_STATIC
 	PV $00000083 ; ♂ Docile
-	Nickname "PIKACHU"
+	Text_EN "PIKACHU"11
 	Friendship 255
+
+	End_Trainer

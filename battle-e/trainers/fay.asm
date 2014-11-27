@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 100
 	Class BEAUTY
 	BT_Floor 19
-	OT_Name "FAY"
+	Text_EN "FAY"8
 	OT_ID 00000, 00000
 
-	Introduction I,CAN_T,WAIT,TO,BATTLE,_EX_EX
-	After_Win    _ICE_BEAM,WAS,TOO,COLD,FOR,YOU
-	After_Loss   _ICY_WIND,DIDN_T,BEAT,YOUR,HOT,SPIRIT
+	Intro_EN I,CAN_T,WAIT,TO,BATTLE,_EX_EX
+	Win_EN   _ICE_BEAM,WAS,TOO,COLD,FOR,YOU
+	Loss_EN  _ICY_WIND,DIDN_T,BEAT,YOUR,HOT,SPIRIT
 
 	Pokemon ALTARIA
 	Holds SHELL_BELL
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 20,31,20,20,31,20, ALTARIA_NATURAL_CURE
 	PV $000000E7 ; ♂ Docile
-	Nickname "ALTARIA"
+	Text_EN "ALTARIA"11
 	Friendship 255
 
 	Pokemon STARMIE
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,20,20,20,31,20, STARMIE_NATURAL_CURE
 	PV $0000000F ; ⚲ Modest
-	Nickname "STARMIE"
+	Text_EN "STARMIE"11
 	Friendship 255
 
 	Pokemon REGICE
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 20,20,31,20,31,20, REGICE_CLEAR_BODY
 	PV $00000020 ; ⚲ Relaxed
-	Nickname "REGICE"
+	Text_EN "REGICE"11
 	Friendship 255
+
+	End_Trainer

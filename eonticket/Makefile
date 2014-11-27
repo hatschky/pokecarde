@@ -1,31 +1,36 @@
-all: 00-C000-de.z80 00-C000-en.z80
+all: 00-C000-DE.z80 00-C000-EN.z80 verify
+verify:
+	md5sum --check eonticket.md5
 
 
 eonticket-%.tx: eonticket.asm
-	python ../scripts/charmap.py $< $@
-%.tx: %.asm
-	python ../scripts/charmap.py $< $@
-
-00-C000-%.o: 00-C000-%.asm 00-C000.tx eonticket-%.bin
+	python ../scripts/regionalize.py $< $@ $* $*
+eonticket-%.o: eonticket-%.tx
 	rgbasm -o $@ $<
-eonticket-%.o: eonticket-%.asm eonticket-%.tx
-	rgbasm -o $@ $<
-
-%.gbc: %.o
+eonticket-%.gbc: eonticket-%.o
 	rgblink -o $@ $<
+eonticket-%.bin: eonticket-%.gbc
+	python ../scripts/stripgbc.py $< $@
+eonticket-%.mev: eonticket-%.bin
+	python ../scripts/checksum.py $< $@
 
-# hack to use RGBDS for something other than its intended purpose
-00-C000-de.z80: 00-C000-de.gbc
-	dd if=$< of=$@ bs=1 skip=256 count=7134
-00-C000-en.z80: 00-C000-en.gbc
-	dd if=$< of=$@ bs=1 skip=256 count=7074
-#	cmp -b ../z80/$@ $@
-eonticket-de.z80: eonticket-de.gbc
-	dd if=$< of=$@ bs=1 skip=256 count=691
-eonticket-en.z80: eonticket-en.gbc
-	dd if=$< of=$@ bs=1 skip=256 count=631
-eonticket-%.bin: eonticket-%.z80
-	python ../scripts/scriptchecksum.py $< $@
+prologue-%.tx: prologue.asm
+	python ../scripts/regionalize.py $< $@ $* $*
+prologue-%.o: prologue-%.tx
+	rgbasm -o $@ $<
+prologue-%.gbc: prologue-%.o
+	rgblink -o $@ $<
+prologue-%.bin: prologue-%.gbc
+	python ../scripts/stripgbc.py $< $@
+
+00-C000-%.tx: 00-C000.asm eonticket-%.mev prologue-%.bin
+	python ../scripts/ereadertext.py $< $@ $*
+00-C000-%.o: 00-C000-%.tx
+	rgbasm -o $@ $<
+00-C000-%.gbc: 00-C000-%.o
+	rgblink -o $@ $<
+00-C000-%.z80: 00-C000-%.gbc
+	python ../scripts/stripgbc.py $< $@
 
 clean:
-	rm -f *.tx *.o *.gbc *.z80 *.bin
+	rm -f *.tx *.o *.gbc *.z80 *.bin *.mev

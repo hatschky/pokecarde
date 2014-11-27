@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/candice.bin", "sprites/trainers/pkmn_breeder_f.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "pkmn_breeder_f"
+TRAINER EQUS "candice"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

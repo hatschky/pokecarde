@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db POKEFAN_F
+	Class POKEFAN_F
 	BT_Floor MOSSDEEP
-	OT_Name "ALANA"
+	Text_EN "ALANA"8
 	OT_ID 00000, 00000
 
-	Introduction LET_S,START,THIS,_ELIP,BATTLE,_EX
-	After_Win    OH_,DID,I,_ELIP,WIN,_QU
-	After_Loss   OH_,DID,I,_ELIP,LOSE,_QU
+	Intro_EN LET_S,START,THIS,_ELIP,BATTLE,_EX
+	Win_EN   OH_,DID,I,_ELIP,WIN,_QU
+	Loss_EN  OH_,DID,I,_ELIP,LOSE,_QU
 
 	Pokemon TORKOAL
 	Holds QUICK_CLAW
@@ -19,11 +21,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,31,31, TORKOAL_WHITE_SMOKE
 	PV $000000D9 ; ♂ Quiet
-	Nickname "TORKOAL"
+	Text_EN "TORKOAL"11
 	Friendship 255
 
 	Pokemon DUSCLOPS
-	dw CHESTO_BERRY
+	Holds CHESTO_BERRY
 	Moves CONFUSE_RAY, WILL_O_WISP, TOXIC, REST
 	Level 80
 	PP_Ups 0,0,0,0
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,31,15,15,31, DUSCLOPS_PRESSURE
 	PV $00000016 ; ♀ Sassy
-	Nickname "DUSCLOPS"
+	Text_EN "DUSCLOPS"11
 	Friendship 255
 
 	Pokemon CORSOLA
-	dw MYSTIC_WATER
+	Holds MYSTIC_WATER
 	Moves SURF, ROCK_TOMB, MIRROR_COAT, RECOVER
 	Level 85
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,31,31, CORSOLA_NATURAL_CURE
 	PV $0000001B ; ♀ Brave
-	Nickname "CORSOLA"
+	Text_EN "CORSOLA"11
 	Friendship 255
+
+	End_Trainer

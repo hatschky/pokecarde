@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db POKEFAN_F
+	Class POKEFAN_F
 	BT_Floor MOSSDEEP
-	OT_Name "JUSTINE"
+	Text_EN "JUSTINE"8
 	OT_ID 00000, 00000
 
-	Introduction HEY,_QU_EX,LOOK,AT,MY,POKEMON
-	After_Win    OH_DEAR,WAS,IT,A_LITTLE,SURPRISE,_QU
-	After_Loss   OH_DEAR,IT,WAS,A_LITTLE,SURPRISE,_QU_EX
+	Intro_EN HEY,_QU_EX,LOOK,AT,MY,POKEMON
+	Win_EN   OH_DEAR,WAS,IT,A_LITTLE,SURPRISE,_QU
+	Loss_EN  OH_DEAR,IT,WAS,A_LITTLE,SURPRISE,_QU_EX
 
 	Pokemon PIKACHU
 	Holds LIGHT_BALL
@@ -19,11 +21,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, PIKACHU_STATIC
 	PV $0000000F ; ♀ Modest
-	Nickname "PIKACHU"
+	Text_EN "PIKACHU"11
 	Friendship 255
 
 	Pokemon GOLEM
-	dw BRIGHTPOWDER
+	Holds BRIGHTPOWDER
 	Moves EXPLOSION, EARTHQUAKE, ROCK_SLIDE, FOCUS_PUNCH
 	Level 62
 	PP_Ups 0,0,0,0
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, GOLEM_STURDY
 	PV $0000001B ; ♀ Brave
-	Nickname "GOLEM"
+	Text_EN "GOLEM"11
 	Friendship 255
 
 	Pokemon GENGAR
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,31,15,15,15, GENGAR_LEVITATE
 	PV $00000087 ; ♂ Timid
-	Nickname "GENGAR"
+	Text_EN "GENGAR"11
 	Friendship 255
+
+	End_Trainer

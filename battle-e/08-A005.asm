@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/alana.bin", "sprites/trainers/pokefan_f.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "pokefan_f"
+TRAINER EQUS "alana"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

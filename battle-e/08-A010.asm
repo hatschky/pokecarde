@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/patrick.bin", "sprites/trainers/camper.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "camper"
+TRAINER EQUS "patrick"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

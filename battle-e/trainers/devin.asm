@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
 	db COOLTRAINER_M
 	BT_Floor 19
-	OT_Name "DEVIN"
+	Text_EN "DEVIN"8
 	OT_ID 00000, 00000
 
-	Introduction POWER,BATTLE,IS,ALWAYS,TRENDY,_EX
-	After_Win    SEE,_QU,POWER,BATTLE,IS,TRENDY
-	After_Loss   IS,_ELIP,POWER,BATTLE,TRENDY,_QU
+	Intro_EN POWER,BATTLE,IS,ALWAYS,TRENDY,_EX
+	Win_EN   SEE,_QU,POWER,BATTLE,IS,TRENDY
+	Loss_EN  IS,_ELIP,POWER,BATTLE,TRENDY,_QU
 
 	Pokemon HERACROSS
 	Holds SCOPE_LENS
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, HERACROSS_SWARM
 	PV $000000E4 ; ♂ Adamant
-	Nickname "HERACROSS"
+	Text_EN "HERACROSS"11
 	Friendship 255
 
 	Pokemon SALAMENCE
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, SALAMENCE_INTIMIDATE
 	PV $000000E4 ; ♂ Adamant
-	Nickname "SALAMENCE"
+	Text_EN "SALAMENCE"11
 	Friendship 255
 
 	Pokemon METAGROSS
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, METAGROSS_CLEAR_BODY
 	PV $000000E4 ; ⚲ Adamant
-	Nickname "METAGROSS"
+	Text_EN "METAGROSS"11
 	Friendship 255
+
+	End_Trainer

@@ -1,17 +1,19 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
 	Class GENTLEMAN
 	BT_Floor 0
-	OT_Name "NILS"
+	Text_EN "NILS"8
 	OT_ID 00000, 00000
 
-	Introduction YOUR,CHALLENGE,IS,MORE,THAN,WELCOME
-	After_Win    THAT_S,REALLY,ALL,YOU,GOT,_QU
-	After_Loss   HMM,WELL,DONE,_ELIP,YOUNG,TRAINER
+	Intro_EN YOUR,CHALLENGE,IS,MORE,THAN,WELCOME
+	Win_EN   THAT_S,REALLY,ALL,YOU,GOT,_QU
+	Loss_EN  HMM,WELL,DONE,_ELIP,YOUNG,TRAINER
 
 	Pokemon SABLEYE
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves NIGHT_SHADE, FAKE_OUT, DETECT, KNOCK_OFF
 	Level 50
 	PP_Ups 0,0,0,0
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, SABLEYE_KEEN_EYE
 	PV $000000CE ; ♂ Docile
-	Nickname "SABLEYE"
+	Text_EN "SABLEYE"11
 	Friendship 255
 
 	Pokemon PLUSLE
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, PLUSLE_PLUS
 	PV $0000000F ; ♀ Modest
-	Nickname "PLUSLE"
+	Text_EN "PLUSLE"11
 	Friendship 255
 
 	Pokemon LUDICOLO
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, LUDICOLO_SWIFT_SWIM
 	PV $000000D2 ; ♂ Timid
-	Nickname "LUDICOLO"
+	Text_EN "LUDICOLO"11
 	Friendship 255
+
+	End_Trainer

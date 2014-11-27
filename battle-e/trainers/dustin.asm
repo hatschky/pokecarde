@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db TRIATHLETE_M_SWIM
+	Class TRIATHLETE_M_SWIM
 	BT_Floor MOSSDEEP
-	OT_Name "DUSTIN"
+	Text_EN "DUSTIN"8
 	OT_ID 00000, 00000
 
-	Introduction RUN,_EX,I,NEVER,_STOP,_EX
-	After_Win    ALL_RIGHT,_EX,_STOP,_EX,I_AM,DONE
-	After_Loss   NON_STOP,_EX,I,WILL,RUN,MORE
+	Intro_EN RUN,_EX,I,NEVER,_STOP,_EX
+	Win_EN   ALL_RIGHT,_EX,_STOP,_EX,I_AM,DONE
+	Loss_EN  NON_STOP,_EX,I,WILL,RUN,MORE
 
 	Pokemon DODRIO
 	Holds QUICK_CLAW
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, DODRIO_EARLY_BIRD
 	PV $0000008A ; ♂ Jolly
-	Nickname "DODRIO"
+	Text_EN "DODRIO"11
 	Friendship 255
 
 	Pokemon MANECTRIC
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, MANECTRIC_STATIC
 	PV $0000000E ; ♀ Naive
-	Nickname "MANECTRIC"
+	Text_EN "MANECTRIC"11
 	Friendship 255
 
 	Pokemon LINOONE
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, LINOONE_PICKUP
 	PV $0000008B ; ♂ Naive
-	Nickname "LINOONE"
+	Text_EN "LINOONE"11
 	Friendship 255
+
+	End_Trainer

@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/celina.bin", "sprites/trainers/hex_maniac.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "hex_maniac"
+TRAINER EQUS "celina"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

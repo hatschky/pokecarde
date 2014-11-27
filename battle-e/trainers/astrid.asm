@@ -1,17 +1,19 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
 	Class LADY
 	BT_Floor 0
-	OT_Name "ASTRID"
+	Text_EN "ASTRID"8
 	OT_ID 00000, 00000
 
-	Introduction TALKING,ABOUT,MY,CUTE,POKEMON,_QU
-	After_Win    YOUR,POKEMON,IS,_ELIP,CUTE,TOO
-	After_Loss   OH_,WASN_T,MY,POKEMON,CUTE,_QU
+	Intro_EN TALKING,ABOUT,MY,CUTE,POKEMON,_QU
+	Win_EN   YOUR,POKEMON,IS,_ELIP,CUTE,TOO
+	Loss_EN  OH_,WASN_T,MY,POKEMON,CUTE,_QU
 
 	Pokemon MAWILE
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves IRON_DEFENSE, BITE, VICEGRIP, FAKE_TEARS
 	Level 50
 	PP_Ups 0,0,0,0
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, MAWILE_INTIMIDATE
 	PV $0000001F ; ♀ Docile
-	Nickname "MAWILE"
+	Text_EN "MAWILE"11
 	Friendship 255
 
 	Pokemon MINUN
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, MINUN_MINUS
 	PV $000000D7 ; ♂ Modest
-	Nickname "MINUN"
+	Text_EN "MINUN"11
 	Friendship 255
 
 	Pokemon SHIFTRY
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,15,15,15, SHIFTRY_EARLY_BIRD
 	PV $000000D2 ; ♂ Timid
-	Nickname "SHIFTRY"
+	Text_EN "SHIFTRY"11
 	Friendship 255
+
+	End_Trainer

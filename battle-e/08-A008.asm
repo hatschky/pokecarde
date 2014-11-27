@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/fay.bin", "sprites/trainers/beauty.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "beauty"
+TRAINER EQUS "fay"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

@@ -1,22 +1,27 @@
-INCLUDE "macros.asm"
+INCLUDE "berries/macros.asm"
 
-	Berry "STRIB"
-	db HARD
+	Enigma_Berry
+
+	Text_EN "STRIB@@"7
+	Firmness HARD
 	Size 12,2
 	Yield_Range 4, 12
-	db 0,0,0,0,0,0,0,0
-	db 24 ; hours per growth stage
-	db 30,0,0,30,0 ; flavor
-	db 85  ; smoothness
-	db 0
+	dd 0
+	dd 0
+	Growth_Stage_Hours 24
+	Flavor 30, 0, 0, 30, 0
+	Smoothness 85
 
 BerrySprite:
-	INCBIN "../sprites/berries/strib.4bpp"
+	INCBIN "sprites/berries/strib.4bpp"
 BerryPalette:
-	INCLUDE "../sprites/berries/strib.pal"
+	INCLUDE "sprites/berries/strib.pal"
 
-	Tag_Text "It grows slowly, but abundantly."
-	Tag_Text "Makes a soothing sound when shaken."
+	Text_EN "It grows slowly, but abundantly."45
+	Text_EN "Makes a soothing sound when shaken."45
+
 	REPT 22
 		db 0 ; Pokéblock ingredient only
 	ENDR
+
+	End_Berry

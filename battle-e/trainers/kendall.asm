@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class POKEFAN_M
 	BT_Floor MOSSDEEP
-	OT_Name "KENDALL"
+	Text_EN "KENDALL"8
 	OT_ID 00000, 00000
 
-	Introduction _FLASH,_EX_EX,I,LIKE,IT,_EX_EX
-	After_Win    CUTE,_EX,POKEMON,_EX,_FLASH,_EX_EX
-	After_Loss   I,CAN_T_WIN,WITH,ONLY,_FLASH,_EX_EX
+	Intro_EN _FLASH,_EX_EX,I,LIKE,IT,_EX_EX
+	Win_EN   CUTE,_EX,POKEMON,_EX,_FLASH,_EX_EX
+	Loss_EN  I,CAN_T_WIN,WITH,ONLY,_FLASH,_EX_EX
 
 	Pokemon PLUSLE
 	Holds MAGNET
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,31,15, PLUSLE_PLUS
 	PV $0000008C ; ♂ Modest
-	Nickname "PLUSLE"
+	Text_EN "PLUSLE"11
 	Friendship 255
 
 	Pokemon MINUN
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, MINUN_MINUS
 	PV $0000000F ; ♀ Modest
-	Nickname "MINUN"
+	Text_EN "MINUN"11
 	Friendship 255
 
 	Pokemon SNORUNT
-	dw NEVERMELTICE
+	Holds NEVERMELTICE
 	Moves BLOCK, ICY_WIND, PROTECT, FLASH
 	Level 94
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, SNORUNT_INNER_FOCUS
 	PV $0000000F ; ♀ Modest
-	Nickname "SNORUNT"
+	Text_EN "SNORUNT"11
 	Friendship 255
+
+	End_Trainer

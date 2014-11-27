@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 100
-	db EXPERT_F
+	Class EXPERT_F
 	BT_Floor 12
-	OT_Name "SANDIA"
+	Text_EN "SANDIA"8
 	OT_ID 00000, 00000
 
-	Introduction HERE_I_COME,_EX,MY,GUARD,IS,INVINCIBLE
-	After_Win    I,BELIEVE,IN,MYSELF,_AND,TRAIN
-	After_Loss   YOU,DID,_DETECT,MY,WEAK,POINTS
+	Intro_EN HERE_I_COME,_EX,MY,GUARD,IS,INVINCIBLE
+	Win_EN   I,BELIEVE,IN,MYSELF,_AND,TRAIN
+	Loss_EN  YOU,DID,_DETECT,MY,WEAK,POINTS
 
 	Pokemon CLAYDOL
 	Holds SHELL_BELL
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 20,20,31,20,20,31, CLAYDOL_LEVITATE
 	PV $0000000F ; ⚲ Modest
-	Nickname "CLAYDOL"
+	Text_EN "CLAYDOL"11
 	Friendship 255
 
 	Pokemon METAGROSS
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 20,31,20,20,20,31, METAGROSS_CLEAR_BODY
 	PV $0000001C ; ⚲ Adamant
-	Nickname "METAGROSS"
+	Text_EN "METAGROSS"11
 	Friendship 255
 
 	Pokemon REGICE
-	dw CHESTO_BERRY
+	Holds CHESTO_BERRY
 	Moves CURSE, REST, ICE_BEAM, SUPERPOWER
 	Level 100
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 20,20,31,31,20,20, REGICE_CLEAR_BODY
 	PV $0000001E ; ⚲ Bold
-	Nickname "REGICE"
+	Text_EN "REGICE"11
 	Friendship 255
+
+	End_Trainer

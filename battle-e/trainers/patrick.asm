@@ -1,17 +1,19 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class CAMPER
 	BT_Floor MOSSDEEP
-	OT_Name "PATRICK"
+	Text_EN "PATRICK"8
 	OT_ID 00000, 00000
 
-	Introduction WHAT,COLOR,DO,I,LIKE,_QU
-	After_Win    WASN_T,IT,_A,GOOD,COLOR,_QU
-	After_Loss   I,WILL,ALWAYS,LIKE,MY,COLOR
+	Intro_EN WHAT,COLOR,DO,I,LIKE,_QU
+	Win_EN   WASN_T,IT,_A,GOOD,COLOR,_QU
+	Loss_EN  I,WILL,ALWAYS,LIKE,MY,COLOR
 
 	Pokemon XATU
-	dw CHESTO_BERRY
+	Holds CHESTO_BERRY
 	Moves PSYCHIC, CONFUSE_RAY, REST, NIGHT_SHADE
 	Level 50
 	PP_Ups 0,0,0,0
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, XATU_SYNCHRONIZE
 	PV $0000000F ; ♀ Modest
-	Nickname "XATU"
+	Text_EN "XATU"11
 	Friendship 255
 
 	Pokemon LUDICOLO
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,31,15,15,15, LUDICOLO_SWIFT_SWIM
 	PV $00000014 ; ♀ Calm
-	Nickname "LUDICOLO"
+	Text_EN "LUDICOLO"11
 	Friendship 255
 
 	Pokemon FLYGON
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, FLYGON_LEVITATE
 	PV $00000090 ; ♂ Rash
-	Nickname "FLYGON"
+	Text_EN "FLYGON"11
 	Friendship 255
+
+	End_Trainer

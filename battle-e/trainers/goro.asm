@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
 	Class NINJA_BOY
 	BT_Floor MOSSDEEP
-	OT_Name "GORO"
+	Text_EN "GORO"8
 	OT_ID 00000, 00000
 
-	Introduction COME_ON,_EX_EX,COME_ON,_EX_EX,SPEED_BOOST,_EX_EX
-	After_Win    MORE,_EX_EX,MORE,_EX_EX,SPEED_BOOST,_EX_EX
-	After_Loss   ARRGH,_ELIP,GIVE_ME,MORE,SPEED_BOOST,_ELIP_EX
+	Intro_EN COME_ON,_EX_EX,COME_ON,_EX_EX,SPEED_BOOST,_EX_EX
+	Win_EN   MORE,_EX_EX,MORE,_EX_EX,SPEED_BOOST,_EX_EX
+	Loss_EN  ARRGH,_ELIP,GIVE_ME,MORE,SPEED_BOOST,_ELIP_EX
 
 	Pokemon ELECTRODE
 	Holds KING_S_ROCK
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, ELECTRODE_STATIC
 	PV $0000000E ; ⚲ Naive
-	Nickname "ELECTRODE"
+	Text_EN "ELECTRODE"11
 	Friendship 255
 
 	Pokemon NINJASK
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, NINJASK_SPEED_BOOST
 	PV $000000D5 ; ♂ Jolly
-	Nickname "NINJASK"
+	Text_EN "NINJASK"11
 	Friendship 255
 
 	Pokemon CROBAT
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,15,15, CROBAT_INNER_FOCUS
 	PV $0000000D ; ♀ Jolly
-	Nickname "CROBAT"
+	Text_EN "CROBAT"11
 	Friendship 255
+
+	End_Trainer

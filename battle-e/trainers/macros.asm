@@ -1,59 +1,50 @@
-INCLUDE "../../constants/abilities.asm"
-INCLUDE "../../constants/easychat.asm"
-INCLUDE "../../constants/items.asm"
-INCLUDE "../../constants/moves.asm"
-INCLUDE "../../constants/pokemon.asm"
-INCLUDE "../../constants/trainerclasses.asm"
+INCLUDE "../macros.asm"
+INCLUDE "../constants/abilities.asm"
+INCLUDE "../constants/easychat.asm"
+INCLUDE "../constants/items.asm"
+INCLUDE "../constants/moves.asm"
+INCLUDE "../constants/pokemon.asm"
+INCLUDE "../constants/trainerclasses.asm"
 
 MOSSDEEP EQU 0
 
-BT_Level: MACRO
+Battle_Trainer: MACRO
 	Section "battle",ROM0[$100]
-	db \1
+	db $01
+	dd $02000000
+	db REGION,0,REGION,0,0,0,$04,0,$80,$01,0,0
+	db $0D
+	dd $02000018
+	db $02,$00
 	ENDM
-Class: MACRO
-	db (\1)
-	ENDM
-BT_Floor: MACRO
-	dw \1
-	ENDM
-OT_Name: MACRO
-	db \1
-	db $FF
-	REPT 7 - STRLEN(\1)
-		db 0
-	ENDR
-	ENDM
-Introduction: MACRO
+
+BT_Level EQUS "db"
+Class EQUS "db"
+BT_Floor EQUS "dw" ; the byte after it is 00, but apparently means something…
+Intro_EN: MACRO
+	IF REGION == REGION_EN
 	dw \1, \2, \3, \4, \5, \6
+	ENDC
 	ENDM
-After_Win: MACRO
+Win_EN: MACRO
+	IF REGION == REGION_EN
 	dw \1, \2, \3, \4, \5, \6
+	ENDC
 	ENDM
-After_Loss: MACRO
+Loss_EN: MACRO
+	IF REGION == REGION_EN
 	dw \1, \2, \3, \4, \5, \6
+	ENDC
 	ENDM
-Pokemon: MACRO
-	dw \1
-	ENDM
-Holds: MACRO
-	dw (\1)
-	ENDM
-Moves: MACRO
-	dw \1, \2, \3, \4
-	ENDM
-Level: MACRO
-	db \1
-	ENDM
+Pokemon EQUS "dw"
+Holds EQUS "dw"
+Moves EQUS "dw"
+Level EQUS "db"
 PP_Ups: MACRO
 	db (\1) + (\2 << 2) + (\3 << 4) + (\4 << 6)
 	ENDM
-EVs: MACRO
-	db \1, \2, \3, \4, \5, \6
-	ENDM
-OT_ID: MACRO
-	dw \1, \2
-	ENDM
+EVs EQUS "db"
+OT_ID EQUS "dw"
 IVs: MACRO
 	dw \1 + (\2 << 5) + (\3 << 10) + ((\4 & 1) << 15)
 	dw (\4 >> 1) + (\5 << 4) + (\6 << 9) + (\7 << 15)
@@ -61,13 +52,9 @@ IVs: MACRO
 PV: MACRO
 	dw (\1 & $FFFF), (\1 >> 16)
 	ENDM
-Nickname: MACRO
-	db \1
-	db $FF
-	REPT 10 - STRLEN(\1)
-		db 0
-	ENDR
-	ENDM
-Friendship: MACRO
-	db \1
+Friendship EQUS "db"
+
+End_Trainer: MACRO
+	db 0,0,0,0
+	EOF
 	ENDM

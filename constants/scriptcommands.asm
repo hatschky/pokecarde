@@ -56,18 +56,18 @@ waitkeypress: MACRO
 	ENDM
 setvirtualaddress: MACRO
 	db $B8
-	GBAPTR ScriptBaseAddress, \1
+	GBAPTR \1
 	ENDM
 virtualgotoif: MACRO
 	db $BB
 	db \1
-	GBAPTR ScriptBaseAddress, \2
+	GBAPTR \2
 	ENDM
 virtualmsgbox: MACRO
 	db $BD
-	GBAPTR ScriptBaseAddress, \1
+	GBAPTR \1
 	ENDM
 virtualloadpointer: MACRO
 	db $BE
-	GBAPTR ScriptBaseAddress, \1
+	GBAPTR \1
 	ENDM

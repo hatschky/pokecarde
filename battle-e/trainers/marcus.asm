@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
-	db EXPERT_M
+	Class EXPERT_M
 	BT_Floor 5
-	OT_Name "MARCUS"
+	Text_EN "MARCUS"8
 	OT_ID 00000, 00000
 
-	Introduction MY,ATTACK,IS,GENIUS,_AND,INVINCIBLE
-	After_Win    HOW,WAS,THE,POISON,ATTACK,_QU
-	After_Loss   I,_ELIP,CAN_T,BEAT,YOU,_QU
+	Intro_EN MY,ATTACK,IS,GENIUS,_AND,INVINCIBLE
+	Win_EN   HOW,WAS,THE,POISON,ATTACK,_QU
+	Loss_EN  I,_ELIP,CAN_T,BEAT,YOU,_QU
 
 	Pokemon SKARMORY
 	Holds LEFTOVERS
@@ -19,11 +21,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,14,15,15,14,30, SKARMORY_KEEN_EYE ; HP Bug 70
 	PV $00000094 ; ♂ Careful
-	Nickname "SKARMORY"
+	Text_EN "SKARMORY"11
 	Friendship 255
 
 	Pokemon HERACROSS
-	dw SITRUS_BERRY
+	Holds SITRUS_BERRY
 	Moves TOXIC, PROTECT, MEGAHORN, DIG
 	Level 50
 	PP_Ups 0,0,0,0
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, HERACROSS_GUTS
 	PV $0000000D ; ♀ Jolly
-	Nickname "HERACROSS"
+	Text_EN "HERACROSS"11
 	Friendship 255
 
 	Pokemon SWAMPERT
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,15, SWAMPERT_TORRENT
 	PV $0000007F ; ♂ Brave
-	Nickname "SWAMPERT"
+	Text_EN "SWAMPERT"11
 	Friendship 255
+
+	End_Trainer

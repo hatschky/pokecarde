@@ -1,2 +1,4 @@
-INCLUDE "battletrainer.tx"
-	BattleTrainer "trainers/sonya.bin", "sprites/trainers/tuber_f.4bpp"
+INCLUDE "../macros.asm"
+CLASS EQUS   "tuber_f"
+TRAINER EQUS "sonya"
+INCLUDE "battletrainer-{REGION_NAME}.tx"

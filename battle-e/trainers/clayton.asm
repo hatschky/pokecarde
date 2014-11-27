@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
-	db PKMN_RANGER_M
+	Class PKMN_RANGER_M
 	BT_Floor 5
-	OT_Name "CLAYTON"
+	Text_EN "CLAYTON"8
 	OT_ID 00000, 00000
 
-	Introduction HEHE,MY,BATTLE,ISN_T,THAT,SHAKY
-	After_Win    HEHE,_ELIP,_EARTHQUAKE,IS,VERY,SHAKY
-	After_Loss   UH_OH,MY,ATTACK,WAS,A_LITTLE,SHAKY
+	Intro_EN HEHE,MY,BATTLE,ISN_T,THAT,SHAKY
+	Win_EN   HEHE,_ELIP,_EARTHQUAKE,IS,VERY,SHAKY
+	Loss_EN  UH_OH,MY,ATTACK,WAS,A_LITTLE,SHAKY
 
 	Pokemon FLYGON
 	Holds SOFT_SAND
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,15,15, FLYGON_LEVITATE
 	PV $00000090 ; ♂ Rash
-	Nickname "FLYGON"
+	Text_EN "FLYGON"11
 	Friendship 255
 
 	Pokemon RHYDON
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, RHYDON_ROCK_HEAD
 	PV $0000001B ; ♀ Brave
-	Nickname "RHYDON"
+	Text_EN "RHYDON"11
 	Friendship 255
 
 	Pokemon SWAMPERT
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, SWAMPERT_TORRENT
 	PV $0000007E ; ♂ Lonely
-	Nickname "SWAMPERT"
+	Text_EN "SWAMPERT"11
 	Friendship 255
+
+	End_Trainer

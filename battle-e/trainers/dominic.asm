@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db GUITARIST
+	Class GUITARIST
 	BT_Floor MOSSDEEP
-	OT_Name "DOMINIC"
+	Text_EN "DOMINIC"8
 	OT_ID 00000, 00000
 
-	Introduction LISTEN,TO,MY,SONG,_AND,SPIRIT
-	After_Win    WOW,_EX_EX,ARE,YOU,LISTENING,_QU
-	After_Loss   ARRGH,I,DON_T,LIKE,SAD,SONGS
+	Intro_EN LISTEN,TO,MY,SONG,_AND,SPIRIT
+	Win_EN   WOW,_EX_EX,ARE,YOU,LISTENING,_QU
+	Loss_EN  ARRGH,I,DON_T,LIKE,SAD,SONGS
 
 	Pokemon SKARMORY
 	Holds SHARP_BEAK
@@ -19,11 +21,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,15,15,31, SKARMORY_STURDY
 	PV $000000DF ; ♂ Careful
-	Nickname "SKARMORY"
+	Text_EN "SKARMORY"11
 	Friendship 255
 
 	Pokemon WAILORD
-	dw CHESTO_BERRY
+	Holds CHESTO_BERRY
 	Moves ROAR, SURF, SLEEP_TALK, REST
 	Level 70
 	PP_Ups 0,0,0,0
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,31,15,15,31, WAILORD_WATER_VEIL
 	PV $00000014 ; ♀ Calm
-	Nickname "WAILORD"
+	Text_EN "WAILORD"11
 	Friendship 255
 
 	Pokemon EXPLOUD
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,31,15,15,31, EXPLOUD_SOUNDPROOF
 	PV $000000E8 ; ♂ Relaxed
-	Nickname "EXPLOUD"
+	Text_EN "EXPLOUD"11
 	Friendship 255
+
+	End_Trainer

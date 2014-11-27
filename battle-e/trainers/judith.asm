@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db PSYCHIC_F
+	Class PSYCHIC_F
 	BT_Floor MOSSDEEP
-	OT_Name "JUDITH"
+	Text_EN "JUDITH"8
 	OT_ID 00000, 00000
 
-	Introduction WELCOME,_ELIP_EX,I_AM,_A,_TRICK,_T_PSYCHIC
-	After_Win    ISN_T,MY,_TRICK,SO,COOL,_QU
-	After_Loss   _A,GOOD,_TRICK,IS,NEVER,EASY
+	Intro_EN WELCOME,_ELIP_EX,I_AM,_A,_TRICK,_T_PSYCHIC
+	Win_EN   ISN_T,MY,_TRICK,SO,COOL,_QU
+	Loss_EN  _A,GOOD,_TRICK,IS,NEVER,EASY
 
 	Pokemon ALAKAZAM
 	Holds CHOICE_BAND
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, ALAKAZAM_SYNCHRONIZE
 	PV $00000087 ; ♂ Timid
-	Nickname "ALAKAZAM"
+	Text_EN "ALAKAZAM"11
 	Friendship 255
 
 	Pokemon KECLEON
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,31,15,15,15, KECLEON_COLOR_CHANGE
 	PV $00000016 ; ⚲ Sassy
-	Nickname "KECLEON"
+	Text_EN "KECLEON"11
 	Friendship 255
 
 	Pokemon LINOONE
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, LINOONE_PICKUP
 	PV $00000085 ; ♂ Impish
-	Nickname "LINOONE"
+	Text_EN "LINOONE"11
 	Friendship 255
+
+	End_Trainer

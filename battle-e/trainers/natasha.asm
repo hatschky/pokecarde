@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 50
-	db PSYCHIC_F
+	Class PSYCHIC_F
 	BT_Floor 12
-	OT_Name "NATASHA"
+	Text_EN "NATASHA"8
 	OT_ID 00000, 00000
 
-	Introduction LOOK,_EX,MY,SKILLED,ATTACK,_EX_EX
-	After_Win    OH_,WHERE,WAS,YOUR,_LIGHT_SCREEN,_QU
-	After_Loss   I,WAS,NO_MATCH,FOR,YOU,_EX_EX
+	Intro_EN LOOK,_EX,MY,SKILLED,ATTACK,_EX_EX
+	Win_EN   OH_,WHERE,WAS,YOUR,_LIGHT_SCREEN,_QU
+	Loss_EN  I,WAS,NO_MATCH,FOR,YOU,_EX_EX
 
 	Pokemon STARMIE
 	Holds SCOPE_LENS
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,15,15,31,31,15, STARMIE_NATURAL_CURE
 	PV $0000000F ; ⚲ Modest
-	Nickname "STARMIE"
+	Text_EN "STARMIE"11
 	Friendship 255
 
 	Pokemon SALAMENCE
@@ -31,11 +33,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 15,31,15,31,31,15, SALAMENCE_INTIMIDATE
 	PV $0000008C ; ♂ Modest
-	Nickname "SALAMENCE"
+	Text_EN "SALAMENCE"11
 	Friendship 255
 
 	Pokemon SCEPTILE
-	dw BRIGHTPOWDER
+	Holds BRIGHTPOWDER
 	Moves LEAF_BLADE, CRUNCH, DRAGON_CLAW, DOUBLE_TEAM
 	Level 50
 	PP_Ups 0,0,0,0
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, SCEPTILE_OVERGROW
 	PV $0000000F ; ♀ Modest
-	Nickname "SCEPTILE"
+	Text_EN "SCEPTILE"11
 	Friendship 255
+
+	End_Trainer

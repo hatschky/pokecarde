@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level 100
-	db COOLTRAINER_M
+	Class COOLTRAINER_M
 	BT_Floor 5
-	OT_Name "FUEGO"
+	Text_EN "FUEGO"8
 	OT_ID 00000, 00000
 
-	Introduction I,HAVE,_A,FEELING,YOU,CAN_T_WIN
-	After_Win    COLLECT,ICE,STEEL,_AND,ROCK,_EX
-	After_Loss   ICE,STEEL,_AND,ROCK,DON_T,WORK
+	Intro_EN I,HAVE,_A,FEELING,YOU,CAN_T_WIN
+	Win_EN   COLLECT,ICE,STEEL,_AND,ROCK,_EX
+	Loss_EN  ICE,STEEL,_AND,ROCK,DON_T,WORK
 
 	Pokemon GLALIE
 	Holds SCOPE_LENS
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,20,31,20,20,20, GLALIE_INNER_FOCUS
 	PV $00000096 ; ♂ Hardy
-	Nickname "GLALIE"
+	Text_EN "GLALIE"11
 	Friendship 255
 
 	Pokemon SKARMORY
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,20,20,20,20,31, SKARMORY_KEEN_EYE
 	PV $00000017 ; ♀ Careful
-	Nickname "SKARMORY"
+	Text_EN "SKARMORY"11
 	Friendship 255
 
 	Pokemon REGIROCK
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,20,20,20,20, MASQUERAIN_INTIMIDATE
 	PV $0000001B ; ⚲ Brave
-	Nickname "REGIROCK"
+	Text_EN "REGIROCK"11
 	Friendship 255
+
+	End_Trainer

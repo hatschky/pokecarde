@@ -12,8 +12,8 @@ chars = {
 	'か': '\x06',
 	'き': '\x07',
 	'く': '\x08',
-	'け': '\\t',
-	'こ': '\\n',
+	'け': '\x09',
+	'こ': '\x0A',
 	'さ': '\x0B',
 	'し': '\x0C',
 	'す': '\x0D',
@@ -260,6 +260,8 @@ chars = {
 	'\\p': '\xFB',
 	'\{FC}': '\xFC',
 	'\\v1': '\xFD\x01',
+	'\\v2': '\xFD\x02',
+	'\\v3': '\xFD\x03',
 	'\\n': '\xFE',
 	'@': '\xFF',
 
@@ -273,7 +275,7 @@ chars = {
 	'É': '\x06',
 	'Ê': '\x07',
 	'Ë': '\x08',
-	'Ì': '\\t',
+	'Ì': '\x09',
 	'Î': '\x0B',
 	'Ï': '\x0C',
 	'Ò': '\x0D',
@@ -295,7 +297,7 @@ chars = {
 	'ì': '\x1E',
 	'î': '\x20',
 	'ï': '\x21',
-	'ò': '",$22,"',
+	'ò': '\x22',
 	'ó': '\x23',
 	'ô': '\x24',
 	'œ': '\x25',
@@ -354,8 +356,12 @@ chars = {
 	'.': '\xAD',
 	'-': '\xAE',
 	'…': '\xB0',
-	'“': '\xB1', # replaced with « for French, „ for German
-	'”': '\xB2', # replaced with » for French, “ for German
+	'“': '\xB1', # English, Italian, Spanish
+	'«': '\xB1', # French
+	'„': '\xB1', # German
+	'”': '\xB2', # English, Italian, Spanish
+	'»': '\xB2', # French
+	#'“': '\xB2', # German — clashes with English B1
 	'‘': '\xB3',
 	'’': '\xB4',
 	'$': '\xB7',
@@ -416,89 +422,60 @@ chars = {
 	':': '\xF0',
 }
 
-region = ""
-if sys.argv[2][-6] == '-':
-	region = sys.argv[2][-5:-3].upper()
-
-out = open(sys.argv[2], 'w')
-with open(sys.argv[1], 'r') as f:
-	for asm in f:
-		# split by quotes
-		asms = asm.split('"')
-
-		pad_length = 0
-		output = ''
-		print_macro = True
-		if asms[0].strip() == "Text":
-			asms[0] = asms[0].replace("Text", "db")
-		elif asms[0].strip() == "Tag_Text":
-			pad_length = 45
-		elif asms[0].strip() == ("Text_" + region):
-			asms[0] = asms[0].replace("Text_" + region, "db")
-		elif asms[0].find("Text_") != -1:
-			asms[0] = ";"
-		elif asms[0].find("OT_Name") == -1 and asms[0].find("Nickname") == -1 and asms[0].find("Insert_Prologue") == -1 and asms[0].find("Berry") == -1:
-			print_macro = False
-
-		if print_macro:
-			even = False
-			for token in asms:
-				if even:
-					characters = []
-					# token is a string to convert to byte values
-					while len(token):
-						# read a single UTF-8 codepoint
-						char = token[0]
-						if ord(char) < 0xc0:
-							token = token[1:]
-							# handle escape sequences
-							if char == "\\":
-								if token[0] == '{':
-									for i in range(len(token)):
-										char += token[0]
-										token = token[1:]
-										if char[-1] == '}':
-											break
-								elif token[0] == 'v':
-									char += token[0:2]
-									token = token[2:]
-								else:
-									char += token[0]
-									token = token[1:]
-						elif ord(char) < 0xe0:
-							char = char + token[1:2]
-							token = token[2:]
-						elif ord(char) < 0xf0:
-							char = char + token[1:3]
-							token = token[3:]
-						else:
-							char = char + token[1:4]
-							token = token[4:]
-						characters += [char]
-
-					line = 0
-					output += '"'
-					for char in characters:
-						if chars[char] == '\x00':
-							output += '",$00,"'
-						else:
-							output += chars[char]
-					output += '"'
+asmProblemBytes = ['\x00', '\x09', '\x0A', '\x22']
 
 
-					if pad_length - len(characters) > 0:
-						output += ",$FF"
-						for i in range(len(characters) + 1, pad_length):
-							output += ",$00"
+def utf8ToRSText(t, region = ""):
+	currentChars = chars
+	if region == "DE":
+		chars['“'] = '\xB2'
 
-				else:
-					output += token
-				even = not even
-
+	characters = []
+	char = ""
+	while len(t):
+		if ord(t[0]) >= 0xF0:
+			char += t[0:4]
+			t = t[4:]
+		elif ord(t[0]) >= 0xE0:
+			char += t[0:3]
+			t = t[3:]
+		elif ord(t[0]) >= 0xC0:
+			char += t[0:2]
+			t = t[2:]
 		else:
-			asm = asm.replace("\\0", "\",$00,\"")
-			asm = asm.replace("é",   "\x7F")
-			output = asm
+			char += t[0:1]
+			t = t[1:]
+		if char != "\\" and char != "\\v" and (char[0:2] != "\\{" or char[-1] == "}"):
+			characters.append(char)
+			char = ""
 
-		out.write(output)
-f.closed
+	result = ""
+	for char in characters:
+		result += chars[char]
+	return result
+
+def asmQuote(t):
+	result = ""
+	quoted = False
+	if t[0] in asmProblemBytes:
+		result = '{0}'.format(ord(t[0]))
+	else:
+		result = '"' + t[0]
+		quoted = True
+
+	while len(t):
+		if quoted and t[0] in asmProblemBytes:
+			result += '",{0}'.format(ord(t[0]))
+			quoted = False
+		elif quoted:
+			result += t[0]
+		elif t[0] in asmProblemBytes:
+			result += ',{0}'.format(ord(t[0]))
+			quoted = False
+		else:
+			result += ',"' + t[0]
+			quoted = True
+		t = t[1:]
+	if quoted:
+		result += '"'
+	return result

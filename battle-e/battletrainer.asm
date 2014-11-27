@@ -1,6 +1,3 @@
-INCLUDE "../macros.asm"
-
-BattleTrainer: MACRO
 SECTION "battletrainer",ROM0[$100]
 jp Start
 db $00
@@ -24,21 +21,16 @@ BackdropTilemap: ; A7C
 	INCBIN "sprites/battletrainer.tilemap"
 
 Prologue: ; 0DFC
-	Insert_Prologue $12345678, "カ。ドＥ@", REGION_EN ; corrupted カードｅ “Card e”
+	INCBIN "prologue-{REGION_NAME}.bin"
 
 DataPacket: ; 0E38
-	Insert_Header REGION_EN
-	db BATTLE_TRAINER
-	GBAPTR DataPacket, TrainerData ; $02000018
-	dw $0002
-TrainerData: ; 0E50
-	INCBIN \1
+	INCBIN "trainers/{TRAINER}-{REGION_NAME}.mev"
 	REPT 44
 		db 0 ; pads the data to 256 bytes
 	ENDR
 
 TrainerSprite: ; 0F38
-	INCBIN \2
+	INCBIN "sprites/trainers/{CLASS}.4bpp"
 TrainerSpriteData: ; 1738
 	dw TrainerSprite
 	dw TrainerPalette
@@ -196,10 +188,9 @@ INCLUDE "../common/transfer_data.asm"
 INCLUDE "../common/wrap_up.asm"
 INCLUDE "../common/word_shift_right.asm"
 
-SomeVar1: ds 1           ; 1B9F
-SomeVar2: ds 2           ; 1BA0
-RegionHandlePtr: ds 1    ; 1BA2
-LeftDoorSpriteHandle: ds 2  ; 1BA3
-RightDoorSpriteHandle: ds 2  ; 1BA5
-TrainerSpriteHandle: ds 2 ; 1BA7
-ENDM
+SomeVar1: EOF               ; 1B9F
+SomeVar2: dw 0              ; 1BA0
+RegionHandlePtr: db 0       ; 1BA2
+LeftDoorSpriteHandle: dw 0  ; 1BA3
+RightDoorSpriteHandle: dw 0 ; 1BA5
+TrainerSpriteHandle: dw 0   ; 1BA7

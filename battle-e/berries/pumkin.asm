@@ -1,24 +1,29 @@
-INCLUDE "macros.asm"
+INCLUDE "berries/macros.asm"
 
-	Berry "PUMKIN"
-	db SUPER_HARD
+	Enigma_Berry
+
+	Text_EN "PUMKIN"7
+	Firmness SUPER_HARD
 	Size 4,8
 	Yield_Range 2, 3
-	db 0,0,0,0,0,0,0,0
-	db 18 ; hours per growth stage
-	db 0,0,0,0,40 ; flavor
-	db 65  ; smoothness
-	db 0
+	dd 0
+	dd 0
+	Growth_Stage_Hours 18
+	Flavor 0, 0, 0, 0, 40
+	Smoothness 65
 
 BerrySprite:
-	INCBIN "../sprites/berries/pumkin.4bpp"
+	INCBIN "sprites/berries/pumkin.4bpp"
 BerryPalette:
-	INCLUDE "../sprites/berries/pumkin.pal"
+	INCLUDE "sprites/berries/pumkin.pal"
 
-	Tag_Text "This BERRY is amazingly sour."
-	Tag_Text "It’s heavy due to its dense filling."
+	Text_EN "This BERRY is amazingly sour."45
+	Text_EN "It’s heavy due to its dense filling."45
+
 	db 0,0,0
 	db $04 ; cures freeze
 	db 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0
 	db $06 ; self-cures freeze
 	db 0,0,0
+
+	End_Berry

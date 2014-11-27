@@ -58,7 +58,7 @@ RGB: MACRO
 	ENDM
 
 GBAPTR: MACRO
-	dd $02000000 + \2 - \1
+	dd $02000000 + \1 - ScriptBaseAddress
 	ENDM
 
 Insert_Prologue: MACRO
@@ -77,8 +77,12 @@ Insert_Prologue: MACRO
 	db 0,0
 	ENDM
 
-Insert_Header: MACRO
-	db $01,0,0,0,$02,\1,0,\1,0,0,0,$04,0,$80,$01,0,0
+Mystery_Event: MACRO
+ScriptBaseAddress EQU $100
+	SECTION "mysteryevent", ROM0[$100]
+	db $01
+	dd $02000000
+	db REGION,0,REGION,0,0,0,$04,0,$80,$01,0,0
 	ENDM
 
 REGION_JP EQU $01
@@ -89,13 +93,27 @@ REGION_DE EQU $05 ; !
 REGION_ES EQU $07 ; ¿?
 
 ; types of card data
-VARIABLE_LENGTH  EQU $02
-INSTANT_SCRIPT   EQU $05
+END_OF_CHUNKS    EQU $02
+LOADING_MESSAGE  EQU $03
+SET_LOAD_STATUS  EQU $04
+PRELOAD_SCRIPT   EQU $05
 IN_GAME_SCRIPT   EQU $06
 CUSTOM_BERRY     EQU $07
+AWARD_RIBBON     EQU $08
+NATIONAL_POKEDEX EQU $09
+ADD_RARE_WORD    EQU $0A
 MIX_RECORDS_ITEM EQU $0B
+GIVE_POKEMON     EQU $0C
 BATTLE_TRAINER   EQU $0D
-MULTIPLE_DATA    EQU $10
+CLOCK_ADJUSTMENT EQU $0E
+CHECKSUM_BYTES   EQU $0F ; don’t use this
+CHECKSUM_CRC     EQU $10 ; use this instead
+
+; an FF byte followed by 00s will flag the end of the program so that it can
+; be extracted automatically from the Game Boy ROM that rgbds tries to build
+EOF: MACRO
+	db $FF
+	ENDM
 
 
 ; names for some API functions based on Martin Korth’s GBATEK

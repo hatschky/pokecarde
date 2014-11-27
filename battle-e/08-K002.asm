@@ -1,2 +1,3 @@
-INCLUDE "enigmaberry.tx"
-	EnigmaBerry "berries/drash.bin"
+INCLUDE "../macros.asm"
+BERRY EQUS "drash"
+INCLUDE "enigmaberry-{REGION_NAME}.tx"

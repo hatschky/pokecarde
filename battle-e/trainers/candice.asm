@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db PKMN_BREEDER_F
+	Class PKMN_BREEDER_F
 	BT_Floor MOSSDEEP
-	OT_Name "CANDICE"
+	Text_EN "CANDICE"8
 	OT_ID 00000, 00000
 
-	Introduction WE,ARE,READY,FOR,MORE,_GROWTH
-	After_Win    WE,WILL,TRY,MORE,FOR,_GROWTH
-	After_Loss   SORRY,PARTNER,I,WILL,_HARDEN,MYSELF
+	Intro_EN WE,ARE,READY,FOR,MORE,_GROWTH
+	Win_EN   WE,WILL,TRY,MORE,FOR,_GROWTH
+	Loss_EN  SORRY,PARTNER,I,WILL,_HARDEN,MYSELF
 
 	Pokemon MAGIKARP
 	Holds SILK_SCARF
@@ -19,11 +21,11 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,14,15,14,14,30, MAGIKARP_SWIFT_SWIM
 	PV $00000085 ; ♂ Impish
-	Nickname "MAGIKARP"
+	Text_EN "MAGIKARP"11
 	Friendship 255
 
 	Pokemon MUDKIP
-	dw MYSTIC_WATER
+	Holds MYSTIC_WATER
 	Moves TACKLE, GROWL, MUD_SLAP, WATER_GUN
 	Level 51
 	PP_Ups 0,0,0,0
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,31,15,15,15,15, MUDKIP_TORRENT
 	PV $00000083 ; ♂ Docile
-	Nickname "MUDKIP"
+	Text_EN "MUDKIP"11
 	Friendship 255
 
 	Pokemon DUSKULL
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,31,15,15,15, DUSKULL_LEVITATE
 	PV $0000001B ; ♀ Brave
-	Nickname "DUSKULL"
+	Text_EN "DUSKULL"11
 	Friendship 255
+
+	End_Trainer

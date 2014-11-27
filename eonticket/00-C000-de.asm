@@ -1,3 +1,0 @@
-INCLUDE "../macros.asm"
-REGION EQU REGION_DE
-INCLUDE "00-C000.tx"

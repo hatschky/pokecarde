@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db TC_BLACK_BELT
+	Class TC_BLACK_BELT
 	BT_Floor MOSSDEEP
-	OT_Name "TSUTOMU"
+	Text_EN "TSUTOMU"8
 	OT_ID 00000, 00000
 
-	Introduction HIYAH,I,KNOW,YOUR,WEAK,POINTS
-	After_Win    HAHAHA,_EX_EX,THAT_S,YOUR,WEAK,POINTS
-	After_Loss   ARRGH,YOU,KNOW,MY,WEAK,POINTS
+	Intro_EN HIYAH,I,KNOW,YOUR,WEAK,POINTS
+	Win_EN   HAHAHA,_EX_EX,THAT_S,YOUR,WEAK,POINTS
+	Loss_EN  ARRGH,YOU,KNOW,MY,WEAK,POINTS
 
 	Pokemon ZANGOOSE
 	Holds SCOPE_LENS
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, ZANGOOSE_IMMUNITY
 	PV $0000001C ; ♀ Adamant
-	Nickname "ZANGOOSE"
+	Text_EN "ZANGOOSE"11
 	Friendship 255
 
 	Pokemon SEVIPER
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, SEVIPER_SHED_SKIN
 	PV $00000080 ; ♂ Adamant
-	Nickname "SEVIPER"
+	Text_EN "SEVIPER"11
 	Friendship 255
 
 	Pokemon MACHAMP
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 30,31,14,15,15,14, MACHAMP_GUTS ; HP Electric 70
 	PV $0000001C ; ♀ Adamant
-	Nickname "MACHAMP"
+	Text_EN "MACHAMP"11
 	Friendship 255
+
+	End_Trainer

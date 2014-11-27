@@ -1,7 +1,3 @@
-INCLUDE "../macros.asm"
-INCLUDE "macros.asm"
-
-EnigmaBerry: MACRO
 SECTION "drashberry",ROM0[$100]
 jp Start
 db $00
@@ -25,16 +21,10 @@ REPT 72
 ENDR
 
 Prologue:
-	Insert_Prologue $12345678, "カ。ドＥ@", REGION_EN ; corrupted カードｅ “Card e”
+	INCBIN "prologue-{REGION_NAME}.bin"
 
 DataPacket:
-	Insert_Header REGION_EN
-	db CUSTOM_BERRY
-	GBAPTR DataPacket, BerryData
-	dw $0002
-
-BerryData:
-	INCBIN \1
+	INCBIN "berries/{BERRY}-{REGION_NAME}.mev"
 	db 0,0
 
 INCLUDE "../common/mem_struct.asm"
@@ -43,7 +33,7 @@ BackgroundSpriteData:
 	dw BackgroundSprite, BackgroundPalette, BackgroundTilemap
 	db $05,$00,$01,$00
 BerrySpriteData:
-	dw (BerryData+$1C),(BerryData+$49C)
+	dw (DataPacket+$18+$1C),(DataPacket+$18+$49C)
 	db $06,$06,$01,$01,$01,$01,$01
 
 Instructions1: ; B65
@@ -133,8 +123,7 @@ INCLUDE "../common/wrap_up.asm"
 
 INCLUDE "../common/word_shift_right.asm"
 
-SomeVar1: ds 1 ; EFA
-SomeVar2: ds 2 ; EFB
-RegionHandlePtr: ds 1 ; EFD
-SpriteHandlePtr: ds 2 ; EFE
-ENDM
+SomeVar1: EOF         ; EFA
+SomeVar2: dw 0        ; EFB
+RegionHandlePtr: db 0 ; EFD
+SpriteHandlePtr: dw 0 ; EFE

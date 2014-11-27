@@ -1,14 +1,16 @@
-INCLUDE "macros.asm"
+INCLUDE "trainers/macros.asm"
+
+	Battle_Trainer
 
 	BT_Level MOSSDEEP
-	db GUITARIST
+	Class GUITARIST
 	BT_Floor MOSSDEEP
-	OT_Name "HAYDEN"
+	Text_EN "HAYDEN"8
 	OT_ID 00000, 00000
 
-	Introduction YEAH,_EX,COOL,_EXPLOSION,SONGS,_EX_EX
-	After_Win    YEAH,_EX_EX,INCREDIBLE,_EXPLOSION,SONGS,_EX_EX
-	After_Loss   NO,_EX,MY,SONGS,AREN_T,POPULAR
+	Intro_EN YEAH,_EX,COOL,_EXPLOSION,SONGS,_EX_EX
+	Win_EN   YEAH,_EX_EX,INCREDIBLE,_EXPLOSION,SONGS,_EX_EX
+	Loss_EN  NO,_EX,MY,SONGS,AREN_T,POPULAR
 
 	Pokemon ELECTRODE
 	Holds MAGNET
@@ -19,7 +21,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,15, ELECTRODE_STATIC
 	PV $00000080 ; ⚲ Adamant
-	Nickname "ELECTRODE"
+	Text_EN "ELECTRODE"11
 	Friendship 255
 
 	Pokemon SOLROCK
@@ -31,7 +33,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,15,15,31, SOLROCK_LEVITATE
 	PV $0000007F ; ⚲ Brave
-	Nickname "SOLROCK"
+	Text_EN "SOLROCK"11
 	Friendship 255
 
 	Pokemon SHIFTRY
@@ -43,5 +45,7 @@ INCLUDE "macros.asm"
 	OT_ID 00000, 00000
 	IVs 31,15,15,31,15,15, SHIFTRY_EARLY_BIRD
 	PV $00000080 ; ♂ Adamant
-	Nickname "SHIFTRY"
+	Text_EN "SHIFTRY"11
 	Friendship 255
+
+	End_Trainer
